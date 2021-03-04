@@ -32,8 +32,6 @@ const button=document.querySelector('button')
 button.addEventListener('click', function(e){
     let x= e.offsetX;
     let y=  e.offsetY;
-    console.log(e.offsetX)
-    console.log(e.offsetY)
     let ripples=document.createElement('span');
     ripples.style.left=x+'px';
     ripples.style.top=y+'px';
@@ -54,6 +52,5 @@ function short(){
     data.type="text/html"
     data.data=url
     data.classList.add('site')
-    console.log(data)
     document.getElementById('hidden').appendChild(data)
 }
