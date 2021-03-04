@@ -49,7 +49,7 @@ button.addEventListener('click', function(e){
 function short(){
     document.getElementById('hidden').innerHTML=''
     var url=document.getElementById('urlinput').value
-    url='http://tinyurl.com/api-create.php?url='+url
+    url='https://tinyurl.com/api-create.php?url='+url
     data=document.createElement('object')
     data.type="text/html"
     data.data=url
