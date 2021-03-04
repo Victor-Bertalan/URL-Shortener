@@ -88,6 +88,24 @@ span{
     animation: animate 1s linear infinite;
 }
 
+#hidden{
+    display: flex;
+    position: absolute;
+    width:100vw;
+    height:6vh;
+    justify-content: center;
+    top:45vh;
+}
+
+.site{
+    width:fit-content;
+    text-align: center;
+    border-radius: 2vh;
+    background-color: #FFF;
+    opacity: 0.9;
+    padding: 0 2vw;
+}
+
 @keyframes animate{
     0%{
         width: 0px;

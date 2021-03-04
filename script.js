@@ -1,5 +1,3 @@
-var endpoint = "https://www.jsonstore.io/8ba4fd855086288421f770482e372ccb5a05d906269a34da5884f39eed0418a1";
-
 var container=document.querySelector(".container")
 
 for(let i=0;i<250;i++){
@@ -29,50 +27,13 @@ function animateCircles(){
 
 animateCircles()
 
-function getrandom(){
-    var random_string = Math.random().toString(32).substring(2, 5) + Math.random().toString(32).substring(2, 5);    
-    return random_string
-}
-
-function geturl(){     
-    var url = document.getElementById("urlinput").value;     
-    var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");     
-    if(!protocol_ok){
-        newurl = "http://"+url;
-        return newurl;
-    }else{
-        return url;
-    }
-}
-function genhash(){
-    if (window.location.hash == ""){
-        window.location.hash = getrandom();
-    }
-}
-
-function send_request(url) {
-    this.url = url; 
-    $.ajax({'url': endpoint+"/"+ window.location.hash.substr(1),'type': 'POST','data': JSON.stringify(this.url), 'dataType':'json','contentType':'application/json; charset=utf-8'})
-}
-
-function shortURL(){
-    var longurl = geturl();
-    genhash();
-    send_request(longurl);
-    var hashh = window.location.hash.substr(1)
-    if (window.location.hash != "") {
-        $.getJSON(endpoint + "/" + hashh, function (data) {data = data["result"];
-        if (data != null) {
-            window.location.href = data;
-        }
-    })
-    }
-}
 
 const button=document.querySelector('button')
 button.addEventListener('click', function(e){
-    let x= e.clientX-e.offsetLeft;
-    let y=e.clientY-e.offsetTop;
+    let x= e.offsetX;
+    let y=  e.offsetY;
+    console.log(e.offsetX)
+    console.log(e.offsetY)
     let ripples=document.createElement('span');
     ripples.style.left=x+'px';
     ripples.style.top=y+'px';
@@ -82,3 +43,17 @@ button.addEventListener('click', function(e){
         ripples.remove()
     },1000);
 })
+
+
+
+function short(){
+    document.getElementById('hidden').innerHTML=''
+    var url=document.getElementById('urlinput').value
+    url='http://tinyurl.com/api-create.php?url='+url
+    data=document.createElement('object')
+    data.type="text/html"
+    data.data=url
+    data.classList.add('site')
+    console.log(data)
+    document.getElementById('hidden').appendChild(data)
+}
